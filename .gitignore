@@ -8,7 +8,6 @@
 /cypress/screenshots
 /cypress/videos
 /cypress/integration/examples
-/cypress
 
 # production
 /build
@@ -24,5 +23,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 circle.yml*
-cypress.json*
 .eslintignore*
