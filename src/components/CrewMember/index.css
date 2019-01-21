@@ -1,0 +1,25 @@
+.CrewMember-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px lightgray solid;
+  border-radius: 10px;
+}
+.CrewMember-info {
+  display: flex;
+}
+.CrewMemeber-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 31px;
+  background-size: cover;
+  border: 2px solid lightgray;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.CrewMember-toolbar {
+  display: flex;
+}
+.CrewMember-up {
+  margin-left: auto;
+}
