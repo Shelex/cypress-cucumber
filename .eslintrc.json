@@ -4,5 +4,8 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/prefer-stateless-function": false,
         "react/forbid-prop-types": [0, {"forbid":[]}]
+      },
+      "block": {
+          "enforce consistent linebreak style" : false
       }
 }

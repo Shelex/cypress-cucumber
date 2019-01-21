@@ -11,7 +11,20 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
+require('console.table')
 const cucumber = require('cypress-cucumber-preprocessor').default
+
 module.exports = (on, config) => {
   on('file:preprocessor', cucumber())
+  on('task', {
+    saveMeasures (measures) {
+      const filtered = measures.filter(s => Boolean(s)).map(({duration}, k) => ({
+        test: k + 1,
+        'duration (ms)': Math.round(duration)
+      }))
+      console.table('Page load timings', filtered)
+
+      return null
+    }
+  })
 }
