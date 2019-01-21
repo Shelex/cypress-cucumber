@@ -24,4 +24,11 @@ ReactDOM.render(
   /* eslint-enable no-undef */
 );
 
+// expose store when run in Cypress
+// eslint-disable-next-line no-undef
+if (window.Cypress) {
+  // eslint-disable-next-line no-undef
+  window.store = store;
+}
+
 registerServiceWorker();
