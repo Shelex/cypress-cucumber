@@ -27,11 +27,13 @@
 /*
 Commands for direct redux manipulation
 */
-Cypress.Commands.add("filtersClear", () => {
+Cypress.Commands.add("filterClear", () => {
     cy.window().its('store').invoke('dispatch', { type: 'CLEAR_FILTERS'})
 })
   
-Cypress.Commands.add("filtersSet", (city, name) => {
+Cypress.Commands.add("filterSet", (name = null, city = null) => {
+    name = name !== '<name>' ? name : null
+    city = city !== '<name>' ? city : null
     cy.window().its('store').invoke('dispatch', { type: 'SET_FILTERS', payload: { city:city, name:name }})
 })
 
@@ -39,14 +41,17 @@ Cypress.Commands.add("hiringStageSet", (uuid, hiringStage) => {
     cy.window().its('store').invoke('dispatch', { type: 'SET_STAGE', payload: { uuid:uuid, hiringStage:hiringStage }})
 })
 
-Cypress.Commands.add("members", () => {
-      cy.window().its('store').invoke('getState').its('data').as('members')
-      return members
+Cypress.Commands.add("reduxStore", () => {
+    cy.window().its('store').invoke('getState')
 })
 
 /*
   commands to check actions binded to UI
   */
+ Cypress.Commands.add("getMembers", () => {
+    cy.get(`.CrewMember-container`)
+})
+
 Cypress.Commands.add("getMembersByState", (state) => {
     const hiringStates = cy.fixture('hiringStates').as('states')
     cy.get(`.App-container > :nth-child(${hiringStates.indexOf(state)})`)

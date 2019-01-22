@@ -1,22 +1,31 @@
-Feature: The search test suite
+Feature: Filters
 	
-Scenario: Basic
+Background: Before each
   Given I open application
-	Then I see "OOS: Crew applications" in the title
+  Then I see "OOS: Crew applications" in the title
 
-Scenario: Basic2
-  Given I open application
-	Then I see "OOS: Crew applications" in the title
-
-  Scenario: Basic3
-  Given I open application
-	Then I see "OOS: Crew applications" in the title
-
-  Scenario: Basic4
-  Given I open application
-	Then I see "OOS: Crew applications" in the title
+Scenario Outline: Filtering
+   When I filter by "<name>" and "<city>"
+   Then I see filters applied
   
-  Scenario: Basic5
-  Given I open application
-	Then I see "OOS: Crew applications" in the title
-  
+@smoke @regression
+Examples:
+|   name    |    city    |
+|   ruiz    |            |
+|   moore   |            |
+|           |  worcester |
+|   lloyd   |  hereford  |
+|cunningham |  sheffield |
+|   Ruiz    |            |
+|cunninghams|            |
+|           | sheffields |
+|           |    Ford    |
+|           |            |
+|           |     l      |
+|    ll     |            |
+|    漢     |            |
+|           |     ї      |
+
+Scenario: Clear Filters
+  When I clear filters
+  Then I see filters reset
