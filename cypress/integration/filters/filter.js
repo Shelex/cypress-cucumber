@@ -7,7 +7,7 @@ Given('I open application', () => {
 
 When (`I filter by {string} and {string}`, (name, city) => {
     cy.reduxStore().as('initialState')
-    cy.filterSet(name, city).as('dispatchBody')
+    .filterSet(name, city).as('dispatchBody')
 })
 
 Then (`I see filters applied`, () => {
@@ -16,7 +16,7 @@ Then (`I see filters applied`, () => {
         cy.wrap(_.filter(initialState.data, function(o) {
             return `${o.name.first} ${o.name.last}`.includes(dispatchBody.name) && o.location.city.includes(dispatchBody.city)
         })).as('expectedState')
-            cy.get('@expectedState').then((expectedState) => {
+            .get('@expectedState').then((expectedState) => {
                 expect(expectedState.filters)
             if (expectedState.length > 0) {
                 cy.getMembers().then((members) => {
@@ -30,7 +30,7 @@ Then (`I see filters applied`, () => {
 
 When (`I clear filters`, () => {
     cy.filterSet('defaultvalue', 'defaultvalue')
-    cy.filterClear()
+    .filterClear()
 })
 
 Then (`I see filters reset`, () => {
