@@ -7,7 +7,6 @@ jobs:
     steps:
       - checkout
       - run: yarn install
-      - run: yarn test
       - run:
           name: Background the app
           command: yarn start
