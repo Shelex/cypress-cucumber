@@ -27,7 +27,19 @@ Step definitions are following the basic implementation of [Application Actions 
 
 Added [performance mark](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) for page loading measures  
 
-### Running is CircleCI 2.0
+### Running tests locally
+
+To run in console:  
+`yarn cypress:test`
+
+To open Cypress GUI:  
+`yarn cypress:open`
+
+### Running tests in docker
+
+`TBD`
+
+### Running in CircleCI 2.0
 
 Tests are automatically run after each commit  
 
