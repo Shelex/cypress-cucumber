@@ -7,8 +7,7 @@ Background: Before each
 Scenario Outline: ChangeStages
    When I change stage for "<uuid>" to "<stage>"
    Then I see member stage changed to "<stage>"
-  
-@smoke @regression
+
 Examples:
 |                uuid                |     stage     |
 |4ff7567e-d639-4a5f-b440-adefe64e33c6|     hired     |

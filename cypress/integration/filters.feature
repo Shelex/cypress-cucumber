@@ -8,7 +8,6 @@ Scenario Outline: Filtering
    When I filter by "<name>" and "<city>"
    Then I see filters applied
   
-@smoke @regression
 Examples:
 |   name    |    city    |
 |   ruiz    |            |

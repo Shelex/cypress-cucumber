@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:test": "cypress run --browser chrome"
   },
   "devDependencies": {
     "console.table": "^0.10.0",

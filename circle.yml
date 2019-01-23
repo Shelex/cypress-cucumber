@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cypress/base:8
+    working_directory: ~/app
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn test
+      - run:
+          name: Background the app
+          command: yarn start
+          background: true
+      - run:
+          name: Run E2E tests
+          command: $(npm bin)/cypress run --record --browser chrome
+          when: on_success
