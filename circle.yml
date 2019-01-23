@@ -15,3 +15,7 @@ jobs:
           name: Run E2E tests
           command: yarn cypress:test
           when: on_success
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
