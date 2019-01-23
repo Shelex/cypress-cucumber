@@ -1,23 +1,14 @@
-const {Given, When, Then} = require('cypress-cucumber-preprocessor/steps')
-const { _ } = Cypress
-
-Given('I open application', () => {
-    cy.visit('/');
-})
+const {When, Then} = require('cypress-cucumber-preprocessor/steps')
 
 When (`I filter by {string} and {string}`, (name, city) => {
     cy.reduxStore().as('initialState')
-    .filterSet(name, city).as('dispatchBody')
+    .filterSet(name, city).its('payload').as('dispatchBody')
 })
 
 Then (`I see filters applied`, () => {
     cy.get('@initialState').then((initialState) => {
-       cy.get('@dispatchBody').its('payload').then((dispatchBody) => {
-        cy.wrap(_.filter(initialState.data, function(o) {
-            return `${o.name.first} ${o.name.last}`.includes(dispatchBody.name) && o.location.city.includes(dispatchBody.city)
-        })).as('expectedState')
-            .get('@expectedState').then((expectedState) => {
-                expect(expectedState.filters)
+       cy.get('@dispatchBody').then((dispatchBody) => {
+        cy.getMembersByFilters(initialState, dispatchBody).then((expectedState) => {
             if (expectedState.length > 0) {
                 cy.getMembers().then((members) => {
                     expect(expectedState.length).to.equal(members.length)

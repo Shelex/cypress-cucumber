@@ -7,7 +7,9 @@
 /coverage
 /cypress/screenshots
 /cypress/videos
-/cypress/integration/examples
+/cypress/integration/userStage.feature*
+/cypress/integration/userStage.feature*
+/cypress/integration/userStage*
 
 # production
 /build

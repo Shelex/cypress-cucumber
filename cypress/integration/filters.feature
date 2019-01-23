@@ -29,3 +29,8 @@ Examples:
 Scenario: Clear Filters
   When I clear filters
   Then I see filters reset
+
+Scenario: Filter persistance
+  When I filter by "ll" and "<city>"
+  And  I reload the page
+  Then I see application state is persistant

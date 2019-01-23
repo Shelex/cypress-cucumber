@@ -23,9 +23,10 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-  
+const { _ } = Cypress
+
 /*
-Commands for direct redux manipulation
+Commands for direct state manipulation
 */
 Cypress.Commands.add("filterClear", () => {
     cy.window().its('store').invoke('dispatch', { type: 'CLEAR_FILTERS'})
@@ -46,25 +47,30 @@ Cypress.Commands.add("reduxStore", () => {
 })
 
 /*
-  commands to check actions binded to UI
-  */
- Cypress.Commands.add("getMembers", () => {
+  commands to fetch UI data
+*/
+Cypress.Commands.add("getMembers", () => {
     cy.get(`.CrewMember-container`)
 })
 
-Cypress.Commands.add("getMembersByState", (state) => {
-    const hiringStates = cy.fixture('hiringStates').as('states')
-    cy.get(`.App-container > :nth-child(${hiringStates.indexOf(state)})`)
+Cypress.Commands.add("getMembersByStage", (stage) => {
+    cy.fixture('hiringStages').as('stages')
+    .get('@stages').then((stages) => {
+        let selector = `.App-container > :nth-child(${stages[stage]}) > div`
+        cy.get(selector).children().its('length')
+    })  
 })
 
-Cypress.Commands.add("filtersAdd", (name, city) => {
-  cy.get('#filters #name').type(name)
-  cy.get('#filters #city').type(city)
-  cy.get('#filters [type="submit"]').click()
+// util commands for data filtering
+
+Cypress.Commands.add("getMemberFromStorageByUuid", (storage, uuid) => {
+    return _.find(storage.data, (o) => { return o.login.uuid == uuid })
 })
 
-Cypress.Commands.add("filtersClear", () => {
-  cy.get('#filters [type="button"]').click()
+Cypress.Commands.add("getMembersByFilters", (storage, dispatchBody) => {
+    return _.filter(storage.data, function(o) {
+        return `${o.name.first} ${o.name.last}`.includes(dispatchBody.name) && o.location.city.includes(dispatchBody.city)
+    })
 })
 
 // Measure webpage performance
