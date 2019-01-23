@@ -63,7 +63,7 @@ Cypress.Commands.add("getMembersByStage", (stage) => {
 
 // util commands for data filtering
 
-Cypress.Commands.add("getMemberFromStorageByUuid", (storage, uuid) => {
+Cypress.Commands.add("getMemberByUuid", (storage, uuid) => {
     return _.find(storage.data, (o) => { return o.login.uuid == uuid })
 })
 
