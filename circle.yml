@@ -13,5 +13,5 @@ jobs:
           background: true
       - run:
           name: Run E2E tests
-          command: $(npm bin)/cypress run --record --browser chrome
+          command: $(npm bin)/cypress run --browser chrome
           when: on_success
