@@ -12,7 +12,7 @@ COPY config ./config
 COPY public ./public
 COPY scripts ./scripts
 COPY src ./src
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install
 RUN yarn build
 RUN yarn global add serve

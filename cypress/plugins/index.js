@@ -22,8 +22,13 @@ module.exports = (on, config) => {
         test: k + 1,
         'duration (ms)': Math.round(duration)
       }))
+      let sum = 0
+      filtered.forEach(test => {
+        sum += Number(test['duration (ms)'])
+      })
+      let avg = sum / filtered.length
+      filtered.push({ 'test': 'average' , 'duration (ms)': Math.round(avg)})
       console.table('Page load timings', filtered)
-
       return null
     }
   })

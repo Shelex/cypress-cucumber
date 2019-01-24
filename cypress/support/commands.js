@@ -69,7 +69,7 @@ Cypress.Commands.add("getMemberByUuid", (storage, uuid) => {
 
 Cypress.Commands.add("getMembersByFilters", (storage, dispatchBody) => {
     return _.filter(storage.data, function(o) {
-        return `${o.name.first} ${o.name.last}`.includes(dispatchBody.name) && o.location.city.includes(dispatchBody.city)
+        return (o.name.first.includes(dispatchBody.name) || o.name.last.includes(dispatchBody.name)) && o.location.city.includes(dispatchBody.city)
     })
 })
 
@@ -101,13 +101,9 @@ before(() => {
   
 after(function saveMeasures () {
     if (measures.length > 0) {
-        let sum = 0
         measures.forEach(measure => {
             cy.log(`Page loaded in ${measure.duration.toFixed(2)} ms`)
-            sum += Number(measure.duration)
         })
-        let avg = sum / measures.length
-        cy.log(`Average loading time is ${avg.toFixed(2)} ms`)
     }
     return cy.task('saveMeasures', measures)
 })

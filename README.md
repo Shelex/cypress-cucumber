@@ -29,18 +29,18 @@ Added [performance mark](https://developer.mozilla.org/en-US/docs/Web/API/User_T
 
 ### Running tests locally
 
-To run in console:  
+To run in terminal:  
 `yarn cypress:chrome`
+`yarn cypress:electron`
 
 To open Cypress GUI:  
 `yarn cypress:open`
 
 ### Running tests in docker
 
-`TBD`
+`docker-compose run cypress yarn cypress:chrome`
+`docker-compose run cypress yarn cypress:electron`
 
 ### Running in CircleCI 2.0
 
 Tests are automatically run after each commit  
-
-

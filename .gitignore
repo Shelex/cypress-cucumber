@@ -22,3 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .eslintignore*
+
+#temporary
+Docker-compose.yml*
+Dockerfile-cypress*
+cypress-docker.json*
+Dockerfile
+README.md
