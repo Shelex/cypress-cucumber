@@ -1,5 +1,5 @@
 # CREW APPLICATION
-
+[![Cypress](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/48xoji/runs)
 [![CircleCI](https://circleci.com/gh/Shelex/cypress-cucumber/tree/master.svg?style=svg)](https://circleci.com/gh/Shelex/cypress-cucumber/tree/master)  
 Simple application which represents dashboard with candidates.  
 
