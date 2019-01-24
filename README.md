@@ -31,14 +31,17 @@ Added [performance mark](https://developer.mozilla.org/en-US/docs/Web/API/User_T
 
 To run in terminal:  
 `yarn cypress:chrome`  
-`yarn cypress:electron`  
+
+`yarn cypress:electron`    
 
 To open Cypress GUI:  
-`yarn cypress:open`
+  
+`yarn cypress:open`  
 
 ### Running tests in docker
 
 `docker-compose run cypress yarn cypress:chrome`  
+  
 `docker-compose run cypress yarn cypress:electron`  
 
 ### Running in CircleCI 2.0
