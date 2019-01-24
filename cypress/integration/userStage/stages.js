@@ -12,6 +12,12 @@ When (`I change stage for {string} to {string}`, (uuid, stage) => {
     cy.hiringStageSet(uuid, stage).its('payload').as('dispatchBody')
 })
 
+
+/*
+Get current state, check that member has stage from event applied
+Get members from old stage and new stage columns, compare initial and current members count
+*/
+
 Then (`I see member stage changed to {string}`, (newStage) => {
     cy.reduxStore().then((currentState) => {
         cy.get('@dispatchBody').then((dispatchBody) => {

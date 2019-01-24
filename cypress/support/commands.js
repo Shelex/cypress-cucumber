@@ -23,35 +23,59 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+/*
+
+import lodash for some array filter\search
+
+*/
 const { _ } = Cypress
 
 /*
-Commands for direct state manipulation
+Dispatch CLEAR_FILTERS event
 */
+
 Cypress.Commands.add("filterClear", () => {
     cy.window().its('store').invoke('dispatch', { type: 'CLEAR_FILTERS'})
 })
   
+/*
+  Dispatch SET_FILTERS event
+*/
+
 Cypress.Commands.add("filterSet", (name = null, city = null) => {
     name = name !== '<name>' ? name : null
     city = city !== '<name>' ? city : null
     cy.window().its('store').invoke('dispatch', { type: 'SET_FILTERS', payload: { city:city, name:name }})
 })
 
+/*
+  Dispatch SET_Stage event
+*/
+
 Cypress.Commands.add("hiringStageSet", (uuid, hiringStage) => {
     cy.window().its('store').invoke('dispatch', { type: 'SET_STAGE', payload: { uuid:uuid, hiringStage:hiringStage }})
 })
+
+/*
+  Get current state
+*/
 
 Cypress.Commands.add("reduxStore", () => {
     cy.window().its('store').invoke('getState')
 })
 
 /*
-  commands to fetch UI data
+  Get member's cards
 */
+
 Cypress.Commands.add("getMembers", () => {
     cy.get(`.CrewMember-container`)
 })
+
+/*
+  Get number of users by stage column
+*/
 
 Cypress.Commands.add("getMembersByStage", (stage) => {
     cy.fixture('hiringStages').as('stages')
@@ -61,7 +85,9 @@ Cypress.Commands.add("getMembersByStage", (stage) => {
     })  
 })
 
-// util commands for data filtering
+/*
+util commands for data filtering (search users in storage by filters or uuid)
+*/
 
 Cypress.Commands.add("getMemberByUuid", (storage, uuid) => {
     return _.find(storage.data, (o) => { return o.login.uuid == uuid })
@@ -98,7 +124,12 @@ const measures = []
 before(() => {
     measures.length = 0
 })
-  
+
+/*
+Add measures table to first test logs, 
+then fire task which will show table in final report
+*/
+
 after(function saveMeasures () {
     if (measures.length > 0) {
         measures.forEach(measure => {

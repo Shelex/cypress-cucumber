@@ -5,6 +5,11 @@ When (`I filter by {string} and {string}`, (name, city) => {
     .filterSet(name, city).its('payload').as('dispatchBody')
 })
 
+/*
+Get current state, apply filter and check that data left after filtering is equal to calculated
+If filter has no results check that no member left
+*/
+
 Then (`I see filters applied`, () => {
     cy.get('@initialState').then((initialState) => {
        cy.get('@dispatchBody').then((dispatchBody) => {
@@ -23,6 +28,11 @@ When (`I clear filters`, () => {
     cy.filterSet('defaultvalue', 'defaultvalue')
     .filterClear()
 })
+
+/*
+check that filters object in state became empty
+state members count should be same as on UI as no filters applied
+*/
 
 Then (`I see filters reset`, () => {
     cy.reduxStore().then((currentState) => {

@@ -12,6 +12,8 @@ COPY config ./config
 COPY public ./public
 COPY scripts ./scripts
 COPY src ./src
+# deleted yarn.lock, as not passed --frozen-lockfile, it could be deleted and build fails
+# package.json is enough
 COPY package.json ./
 RUN yarn install
 RUN yarn build

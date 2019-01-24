@@ -13,6 +13,10 @@ When (`I reload the page`, () => {
   .reload()
 })
 
+/*
+check that after page reload state is not being reset
+*/
+
 Then (`I see application state is persistant`, () => {
   cy.get('@initialState').then((initialState) => {
       cy.reduxStore().then((currentState) => {

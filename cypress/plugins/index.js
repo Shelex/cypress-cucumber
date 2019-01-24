@@ -16,6 +16,9 @@ const cucumber = require('cypress-cucumber-preprocessor').default
 
 module.exports = (on, config) => {
   on('file:preprocessor', cucumber())
+/*
+Task that shows page load time for each test and average value
+*/
   on('task', {
     saveMeasures (measures) {
       const filtered = measures.filter(s => Boolean(s)).map(({duration}, k) => ({
