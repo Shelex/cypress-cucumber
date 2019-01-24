@@ -38,9 +38,9 @@ To open Cypress GUI:
 
 ### Running tests in docker
 
-`docker-compose run cypress yarn cypress:chrome`
-`docker-compose run cypress yarn cypress:electron`
+`docker-compose run cypress yarn cypress:chrome`  
+`docker-compose run cypress yarn cypress:electron`  
 
 ### Running in CircleCI 2.0
 
-Tests are automatically run after each commit  
+Tests are run after commit hook
