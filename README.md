@@ -30,8 +30,8 @@ Added [performance mark](https://developer.mozilla.org/en-US/docs/Web/API/User_T
 ### Running tests locally
 
 To run in terminal:  
-`yarn cypress:chrome`
-`yarn cypress:electron`
+`yarn cypress:chrome`  
+`yarn cypress:electron`  
 
 To open Cypress GUI:  
 `yarn cypress:open`
