@@ -13,7 +13,8 @@ jobs:
           background: true
       - run:
           name: Run E2E tests
-          command: yarn cypress:electron
+          command: yarn cypress:ci
+          record: true
           when: on_success
       - store_artifacts:
           path: cypress/videos

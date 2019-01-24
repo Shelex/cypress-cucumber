@@ -21,7 +21,7 @@ App will be available on http://localhost:5000
 ### Cypress-cucumber e2e tests
 
 Tests are located in `/cypress` folder  
-Feature files are in in `/cypress/integration` following the [Cypress Cucumber Preprocessor Style](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/blob/master/README.md#step-definitions-unique-for-the-feature) with step definitions located in same folder with name of feature.  
+Feature files are in in `/cypress/integration` following the [Cypress Cucumber Preprocessor Style](https://github.com/TheBrainFamily/cypress-cucumber-preprocessor/blob/master/README.md#step-definitions) with step definitions located in same folder with name of feature.  
 
 Step definitions are following the basic implementation of [Application Actions pattern](https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/#Application-actions) proposed by cypress developers, manipulating redux state directly from `/cypress/support/commands` without PageObject layer or UI selectors stored as fixtures.  
 

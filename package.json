@@ -20,7 +20,8 @@
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cypress:chrome": "cypress run --browser chrome",
-    "cypress:electron": "cypress run"
+    "cypress:electron": "cypress run",
+    "cypress:ci": "cypress run --record"
   },
   "devDependencies": {
     "console.table": "^0.10.0",
