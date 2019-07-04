@@ -1,0 +1,18 @@
+{
+    "eslint.packageManager": "yarn",
+    "eslint.autoFixOnSave": true,
+    "eslint.provideLintTask": true,
+    "eslint.workingDirectories": [
+        "./cypress"
+      ],
+    "cucumberautocomplete.steps": [
+        "cypress/integration/**/*.js"
+    ],
+    "cucumberautocomplete.syncfeatures": true,
+    "cucumberautocomplete.strictGherkinCompletion": false,
+    "cucumberautocomplete.onTypeFormat": true,
+    "terminal.integrated.env.osx": {
+        "CYPRESS_NUM_TESTS_KEPT_IN_MEMORY": "15",
+        "CYPRESS_RETRIES": "0",
+    }
+}
