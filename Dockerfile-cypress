@@ -1,14 +1,13 @@
 # base image
-FROM cypress/browsers:chrome69
+FROM cypress/browsers:node8.15.1-chrome73
 
 # set working directory
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/
-RUN yarn
 # install cypress
-RUN yarn add cypress@latest --dev
+RUN yarn install
 
 # copy cypress files and folders
 # take cypress-docker instead of usual config
