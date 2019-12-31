@@ -14,5 +14,14 @@
     "terminal.integrated.env.osx": {
         "CYPRESS_NUM_TESTS_KEPT_IN_MEMORY": "15",
         "CYPRESS_RETRIES": "0",
-    }
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "cypressHelper.commandForOpen": "npx cypress:open",
+    "cypressHelper.customCommandsFolder": "cypress/support",
+    "cypressHelper.typeDefinitionFile": "cypress/support/customCommands.d.ts",
+    "cypressHelper.typeDefinitionExcludePatterns": [
+        "**/*.ts"
+    ]
 }
